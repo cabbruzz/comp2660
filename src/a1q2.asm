@@ -4,7 +4,7 @@
 ; Date: 09/22/2023
 ; Due Date: 09/26/2023 @ 11:59 PM
 ; ID: 110105377
-; Description: Assembly code that is the same as sample C++ program
+; Description: Assembly code that adds two hexadecimal numbers (2000h + 3000h) and then subtracts 1000h.
 
 INCLUDE Irvine32.inc
 INCLUDELIB Irvine32.lib

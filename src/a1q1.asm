@@ -5,6 +5,7 @@
 ; Due Date: 09/26/2023 @ 11:59 PM
 ; ID: 110105377
 ; Description: Assembly code that is the same as sample C++ program
+	; Note: Since Y is not initializd to a number, the output will always be 'C' but has been tested (see program execution image for sample of Y = 32)
 
 INCLUDE Irvine32.inc
 INCLUDELIB Irvine32.lib
@@ -18,17 +19,12 @@ INCLUDELIB user32.lib
 	; data declarations go here
 
 	X DWORD ? 	; Declare X as a DWORD
-	Y DWORD ? 	; Decalre Y as a DWORD
+	Y DWORD 32 	; Decalre Y as a DWORD
 
 .code
 main PROC
 	
 	; code goes here
-	
-	; Input: Enter the value of Y 
-    ;myString BYTE "Enter a value for Y: ",0  ; Null-terminated string
-	mov eax, offset Y
-	call ReadInt;
 
 	; Calculate X
 
