@@ -19,7 +19,7 @@ INCLUDELIB user32.lib
 	; data declarations go here
 
 	X DWORD ? 	; Declare X as a DWORD
-	Y DWORD 32 	; Decalre Y as a DWORD
+	Y DWORD ? 	; Decalre Y as a DWORD
 
 .code
 main PROC
