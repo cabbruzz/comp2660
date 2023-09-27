@@ -56,10 +56,6 @@ main PROC
     ; Store the result in Result
     mov Result, eax
 
-    ; Display the result
-    //mov edx, OFFSET Result
-    //call WriteHex
-
     ; displays registers in console
 	call DumpRegs 
 
@@ -91,7 +87,6 @@ INCLUDELIB user32.lib
     Var1 DWORD 10000h
     Var2 DWORD 2000h
     Result DWORD ?
-
 
 
 .code
