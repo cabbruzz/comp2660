@@ -17,8 +17,8 @@ INCLUDELIB user32.lib
 	val2 WORD 8000h
 	val3 DWORD 0FFFFh
 	val4 WORD 7FFFh
-	val5 DWORD ?
-	arrayW WORD 100h,200h,300h
+	Nal DWORD ?
+	arrayD DWORD 10000h,20000h
 
 
 .code
@@ -35,13 +35,13 @@ main PROC
 	SUB EAX, val3		; EAX - 0FFFFh = ?
 
 
-	; 3. Write instructions that subtract val4 from val2
+	; 3. Write instructions that adds val4 from val2
 	MOV AX, val4		; AX = 7FFFh
-	SUB val2, AX		; AX = 8001h - 7FFFh = 2
+	ADD val2, AX		; AX = 8001h + 7FFFh = 10000h
                         ; OF = 1
 
 
-	; 4. Implement the following expression: val5 = -val1 - (val2 + val4).
+	; 4. Implement the following expression: Nval = -val1 - (val2 + val4).
 
 	MOVZX EAX, val1			; Load val1 into EAX, EAX = 10h
 	NEG EAX					; EAX = -10h
@@ -50,7 +50,7 @@ main PROC
 	ADD EBX, ECX			; Add val2 + val4, EBX = 8001h + 7FFFh = 10000h
 	NEG EBX					; EBX = -10000h
 	ADD EAX, EBX			; EAX = -10h + -10000h = -10010h
-	MOV val5, EAX			; Store the result in val5
+	MOV Nval, EAX			; Store the result in Nval
 
                             ; CF = 1
                             ; SF = 1
@@ -72,12 +72,12 @@ main PROC
 	; SF = 0,	subtracting a value of 1 in this case does not result in a negative value, the sign isn't changing
 
 
-    ; 7. Add the second element of the array to val4
+    ; 7. Add the second element of the array to val3
 
-	MOV AX, arrayW + 2		; Load the second element (offset 2) of the array into AX
-	ADD val4, AX			; Add it to val4
-                            ; SF = 1
-                            ; OF = 1
+	MOV EAX, val3	    		; Load the val3 into EAX: EAX = 0FFFFh
+	ADD EAX, [arrayD+4]			; Add the second element of the array (20000h) to EAX: EAX = 0FFFFh + 20000h = 2FFFFh
+                                ; SF = 1
+                                ; OF = 1
 
     ; 8. Write down the values of the Carry, Sign, Zero, and Overflow flags after each instruction has executed, if possible.
 
@@ -119,12 +119,11 @@ main PROC
         ;	main ENDP
         ;	END main
 
-        ;	
 
 			; Therefore, the final value of EAX after executing is 30000h
 
 
-call DumpRegs
+    call DumpRegs
 
 
 
