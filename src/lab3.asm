@@ -32,7 +32,7 @@ main PROC
  
 
 	; 2. Write an instruction that subtracts val3 from EAX
-	SUB EAX, val3		; EAX - 0FFFFh = ?
+	SUB EAX, val3		; EAX - 0FFFFh = 3FFF8000 - 0FFFF = 3FFE8001 
 
 
 	; 3. Write instructions that subtract val4 from val2
@@ -57,18 +57,17 @@ main PROC
 								;or
 						; val2 = 8001h + 2 = 8002h 
 
-	; CF = 0,	no significant bits were carried out 
-	; SF = 1,	adding a value of 1 in either case does not result in a negative value
+	; CF = 0 
+	; SF = 1
 	
-	; or SF = 1, the most significant digit has been set to 1, indicating a negative numbe rin 2's complement
 
 call DumpRegs
 
 	; 6. If val4 is decremented by 1 using the SUB instruction, what will be the values of the Overflow and Sign flags?
 	SUB val4, 1			; val4 = 7FFFh - 1 = 7FFEh
 
-	; OF = 1,	no overflow occurring 
-	; SF = 1,	subtracting a value of 1 in this case does not result in a negative value
+	; OF = 1
+	; SF = 1
 
 call DumpRegs
 

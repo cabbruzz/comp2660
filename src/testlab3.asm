@@ -95,13 +95,6 @@ main PROC
             ; the code is incorrect and would rather require moving the values into a register such as EAX, EBX and so on in order to run
 
 
-7FF0
-0010
-8000
-8001
-8003
-
-
 
 
     ; 9. What is the value of the EAX after the following segment of code is executed?
