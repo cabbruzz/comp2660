@@ -27,66 +27,71 @@ main PROC
 	; code goes here
 
 	; 1. Write an instruction that increments val2
-	INC val2			; val2 = 8000h + 1 = 8001h
-                        ; SF = 1
+	
+		INC val2			; val2 = 8000h + 1 = 8001h
+                        	; SF = 1
  
 
 	; 2. Write an instruction that subtracts val3 from EAX
-	SUB EAX, val3		; EAX - 0FFFFh = 3FFE8001
+	
+		SUB EAX, val3		; EAX - 0FFFFh = 3FFE8001
 
 
 	; 3. Write instructions that adds val4 from val2
-	MOV AX, val4		; AX = 7FFFh
-	ADD val2, AX		; AX = 8001h + 7FFFh = 10000h
-                        ; CF = 1
+	
+		MOV AX, val4		; AX = 7FFFh
+		ADD val2, AX		; AX = 8001h + 7FFFh = 10000h
+							; CF = 1
 
 
 	; 4. Implement the following expression: Nval = -val1 - (val2 + val4).
 
-	MOVZX EAX, val1			; Load val1 into EAX, EAX = 10h
-	NEG EAX					; EAX = -10h
-	MOVZX EBX, val2			; Load val2 into EBX, EBX = 8001h
-	MOVZX ECX, val4			; Load val4 into ECX, ECX = 7FFFh
-	ADD EBX, ECX			; Add val2 + val4, EBX = 8001h + 7FFFh = 10000h
-	NEG EBX					; EBX = -10000h
-	ADD EAX, EBX			; EAX = -10h + -10000h = -10010h
-	MOV Nval, EAX			; Store the result in Nval
+		MOVZX EAX, val1			; Load val1 into EAX, EAX = 10h
+		NEG EAX					; EAX = -10h
+		MOVZX EBX, val2			; Load val2 into EBX, EBX = 8001h
+		MOVZX ECX, val4			; Load val4 into ECX, ECX = 7FFFh
+		ADD EBX, ECX			; Add val2 + val4, EBX = 8001h + 7FFFh = 10000h
+		NEG EBX					; EBX = -10000h
+		ADD EAX, EBX			; EAX = -10h + -10000h = -10010h
+		MOV Nval, EAX			; Store the result in Nval
 
 
 	; 5. If val2 is incremented by 1 using the ADD instruction, what will be the values of the Carry and Sign flags?
-	ADD val2, 1 		; val2 = 8000h + 1 = 8001h 
-								;or
-						; val2 = 8001h + 2 = 8002h 
-
-	; CF = 0,	no significant bits were carried out 
-	; SF = 1,	adding a value of 1 in either case already resulted in a negative value
 	
+		ADD val2, 1 		; val2 = 8000h + 1 = 8001h 
+									;or
+							; val2 = 8001h + 2 = 8002h 
+
+		; CF = 0,	no significant bits were carried out 
+		; SF = 0,	adding a value of 1 does not change the value of the front number (8), therefore not affecting the sign
+
 
     ; 6. If val4 is decremented by 1 using the SUB instruction, what will be the values of the Overflow and Sign flags?
-	SUB val4, 1			; val4 = 7FFFh - 1 = 7FFEh
+		
+		SUB val4, 1			; val4 = 7FFFh - 1 = 7FFEh
 
-	; OF = 0,	no overflow occurring as it would if val4 was being increased, not decreased
-	; SF = 0,	subtracting a value of 1 in this case does not result in a negative value
+		; OF = 0,	no overflow occurring as it would if val4 was being increased, not decreased
+		; SF = 0,	subtracting a value of 1 in this case does not result in a negative value
 
 
     ; 7. Add the second element of the array to val3?
 
-	MOV EAX, val3	    		; Load the val3 into EAX: EAX = 0FFFFh
-	ADD EAX, [arrayD+4]			; Add the second element of the array (20000h) to EAX: EAX = 0FFFFh + 20000h = 2FFFFh
+		MOV EAX, val3	    		; Load the val3 into EAX: EAX = 0FFFFh
+		ADD EAX, [arrayD+4]			; Add the second element of the array (20000h) to EAX: EAX = 0FFFFh + 20000h = 2FFFFh
 
 
     ; 8. Write down the values of the Carry, Sign, Zero, and Overflow flags after each instruction has executed, if possible.
 		; assuming in this case, val2 is starts at: 8000h
 
-	mov val2, 7FF0h				; val2 = 8000h + 7FF0h = FFF0h
-	add val2, 10h				; val2 = FFF0h + 10h = 10000h
-									; a. CF = 0, SF = 1, ZF = 0, OF = 1
+		mov val2, 7FF0h				; val2 = 8000h + 7FF0h = FFF0h
+		add val2, 10h				; val2 = FFF0h + 10h = 10000h
+										; a. CF = 0, SF = 1, ZF = 0, OF = 1
 
-	add val2, 1					; val2 = 10000h + 1 = 10001h	
-									; b. CF = 0, SF = 1, ZF = 0, OF = 0
+		add val2, 1					; val2 = 10000h + 1 = 10001h	
+										; b. CF = 0, SF = 1, ZF = 0, OF = 0
 
-	add val2, 2					; val2 = 10001h + 2 = 10003h
-									; c. CF = 0, SF = 1, ZF = 0, OF = 0	
+		add val2, 2					; val2 = 10001h + 2 = 10003h
+										; c. CF = 0, SF = 1, ZF = 0, OF = 0	
 
 
     ; 9. What is the value of the EAX after the following segment of code is executed?
@@ -116,7 +121,6 @@ main PROC
 
 
     call DumpRegs
-
 
 
 	exit
