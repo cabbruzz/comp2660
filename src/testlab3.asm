@@ -99,25 +99,27 @@ main PROC
 
     ; 9. What is the value of the EAX after the following segment of code is executed?
 
-	;	INCLUDE Irvine32.inc
-	;	.data
-	;	val1 DWORD 10000h
-	;	val2 DWORD 40000h
-	;	val3 DWORD 20000h
-	;	finalVal DWORD ?
+        ; Note: all code commented out so it is not affected by the rest of the assignment
 
-	;	.code
-	;	main PROC
-	;		mov eax,val1			; EAX = 10000h
-	;		add eax,val2			; EAX = 10000h + 40000h = 50000h
-	;		sub eax,val3			; EAX = 50000h - 20000h = 30000h
-	;		mov finalVal,eax		; finalVal = EAX = 30000h
-	;		call DumpRegs
-	;		exit
-	;	main ENDP
-	;	END main
+        ;	INCLUDE Irvine32.inc
+        ;	.data
+        ;	val1 DWORD 10000h
+        ;	val2 DWORD 40000h
+        ;	val3 DWORD 20000h
+        ;	finalVal DWORD ?
 
-	;	
+        ;	.code
+        ;	main PROC
+        ;		mov eax,val1			; EAX = 10000h
+        ;		add eax,val2			; EAX = 10000h + 40000h = 50000h
+        ;		sub eax,val3			; EAX = 50000h - 20000h = 30000h
+        ;		mov finalVal,eax		; finalVal = EAX = 30000h
+        ;		call DumpRegs
+        ;		exit
+        ;	main ENDP
+        ;	END main
+
+        ;	
 
 			; Therefore, the final value of EAX after executing is 30000h
 

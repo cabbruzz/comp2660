@@ -61,15 +61,11 @@ main PROC
 	; SF = 1
 	
 
-call DumpRegs
-
 	; 6. If val4 is decremented by 1 using the SUB instruction, what will be the values of the Overflow and Sign flags?
 	SUB val4, 1			; val4 = 7FFFh - 1 = 7FFEh
 
-	; OF = 1
-	; SF = 1
-
-call DumpRegs
+	; OF = 0
+	; SF = 0
 
 
 	; 7. Add the second element of the array to val4
