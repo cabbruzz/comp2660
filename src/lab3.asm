@@ -85,7 +85,7 @@ main PROC
 
 		mov val2, 7FF0h				; val2 = 8000h + 7FF0h = FFF0h
 		add val2, 10h				; val2 = FFF0h + 10h = 10000h
-										; a. CF = 0, SF = 1, ZF = 0, OF = 1
+										; a. CF = 1, SF = 1, ZF = 0, OF = 0
 
 		add val2, 1					; val2 = 10000h + 1 = 10001h	
 										; b. CF = 0, SF = 1, ZF = 0, OF = 0
@@ -94,7 +94,7 @@ main PROC
 										; c. CF = 0, SF = 1, ZF = 0, OF = 0	
 
 
-    ; 9. What is the value of the EAX after the following segment of code is executed?
+    ; 9. In your own language describe the function for the following segment of the code
 
         ; Note: all code commented out so it is not affected by the rest of the assignment
 
@@ -117,7 +117,17 @@ main PROC
         ;	END main
 
 
-			; Therefore, the final value of EAX after executing is 30000h
+			; In the .data part, the code is declaring variables as double word values, each val1, val2, and val3 being initialized to hexadecimal values.
+			; The double work value finalVal is being declared and stored with no value
+			; In .code 'main PROC' marks the beginning of the program's code
+			; The first line is moving the value of val1 into eax, EAX = 10000h
+			; The second line is moving/adding the value of val2 into eax, EAX = 10000h + 40000h = 50000h
+			; The third line is moving/adding the value of val3 into eax, EAX = 50000h - 20000h = 30000h
+			; The fourth line is moving/setting the value of eax to the finalVal variable, finalVal = EAX = 30000h
+			; The fifth line calling DumpRegs wil output the values of all registers to the user in the terminal
+			; The sixth line 'exit' is the end of the coding part
+			; 'main ENDP' marks the end of the main procedure
+			; 'END main' is the final end of the program
 
 
     call DumpRegs
